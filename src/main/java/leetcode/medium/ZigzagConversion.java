@@ -4,6 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ZigzagConversion {
+  public static String zigzagConversion(String s, int numRows) {
+    StringBuilder stringBuilderResult = new StringBuilder();
+
+    for (List<Character> column : get2dList(s, numRows)) {
+      for (char c : column) {
+        if (c != ' ') {
+          stringBuilderResult.append(c);
+        }
+      }
+    }
+
+    return stringBuilderResult.toString();
+  }
+
   private static List<List<Character>> get2dList(String s, int numRows) {
     List<List<Character>> twoDList = new ArrayList<>();
 
