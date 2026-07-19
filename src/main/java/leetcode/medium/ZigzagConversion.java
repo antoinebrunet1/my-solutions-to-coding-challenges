@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ZigzagConversion {
+  // https://leetcode.com/problems/zigzag-conversion/description/
   public static String zigzagConversion(String s, int numRows) {
     StringBuilder stringBuilderResult = new StringBuilder();
 
