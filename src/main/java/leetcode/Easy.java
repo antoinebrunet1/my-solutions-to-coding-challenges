@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 
 public class Easy {
   // Complexity: O(n)
+  // https://leetcode.com/problems/two-sum/description/
   public static int[] twoSum(int[] nums, int target) {
     LinkedHashMap<Integer, Integer> targetMinusElementToElement = new LinkedHashMap<>();
 
