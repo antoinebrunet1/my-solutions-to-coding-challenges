@@ -21,7 +21,7 @@ public class ZigzagConversion {
   private static List<List<Character>> get2dList(String s, int numRows) {
     List<List<Character>> twoDList = new ArrayList<>();
 
-    for (int i = 0; i < s.length(); i += 4) {
+    for (int i = 0; i < s.length(); i += numRows) {
       if (isGoingDown(i, numRows)) {
         addColumnGoingDown(twoDList, i, s, numRows);
       } else {
