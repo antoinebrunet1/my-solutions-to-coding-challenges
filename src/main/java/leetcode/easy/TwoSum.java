@@ -1,8 +1,8 @@
-package leetcode;
+package leetcode.easy;
 
 import java.util.LinkedHashMap;
 
-public class Easy {
+public class TwoSum {
   // Complexity: O(n)
   // https://leetcode.com/problems/two-sum/description/
   public static int[] twoSum(int[] nums, int target) {
