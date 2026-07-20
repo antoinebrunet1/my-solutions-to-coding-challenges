@@ -29,4 +29,14 @@ public class ThreeSumTest {
 
     test(nums, expectedResult);
   }
+
+  @Test
+  public void example3() {
+    int[] nums = {0, 0, 0};
+    List<List<Integer>> expectedResult = List.of(
+        List.of(0, 0, 0)
+    );
+
+    test(nums, expectedResult);
+  }
 }
