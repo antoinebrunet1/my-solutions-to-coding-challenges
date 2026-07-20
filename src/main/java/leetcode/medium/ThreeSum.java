@@ -1,6 +1,7 @@
 package leetcode.medium;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -11,34 +12,24 @@ public class ThreeSum {
   // Complexity: O(n^2)
   // Source: https://leetcode.com/problems/3sum/
   public static List<List<Integer>> threeSum(int[] nums) {
-    nums = getNumsWithUniqueValues(nums);
     Map<Integer, List<List<Integer>>> allSumsOfTwoToListOfTuplesForThatSum =
         getAllSumsOfTwoToListOfTuplesForThatSum(nums);
     List<List<Integer>> result = new ArrayList<>();
+    Set<Integer> numsAlreadyDone = new LinkedHashSet<>();
 
-    for (int num : nums) {
-      addListOfTuples(allSumsOfTwoToListOfTuplesForThatSum, num, result);
+    for (int i = 0; i < nums.length; i++) {
+      if (numsAlreadyDone.contains(nums[i])) {
+        continue;
+      }
+
+      addListOf3Tuples(allSumsOfTwoToListOfTuplesForThatSum, i, result, nums);
+      numsAlreadyDone.add(nums[i]);
     }
+
+    result = result.stream().map(list -> list.stream().sorted().toList()).toList();
+    result = new ArrayList<>(new HashSet<>(result));
 
     return result;
-  }
-
-  private static int[] getNumsWithUniqueValues(int[] nums) {
-    Set<Integer> numsSet = new LinkedHashSet<>();
-
-    for (int k : nums) {
-      numsSet.add(k);
-    }
-
-    nums = new int[numsSet.size()];
-    int index = 0;
-
-    for (int num : numsSet) {
-      nums[index] = num;
-      index++;
-    }
-
-    return nums;
   }
 
   private static Map<Integer, List<List<Integer>>> getAllSumsOfTwoToListOfTuplesForThatSum(int[] nums) {
@@ -47,7 +38,10 @@ public class ThreeSum {
     for (int i = 0; i < nums.length; i++) {
       for (int j = i + 1; j < nums.length; j++) {
         int sum = nums[i] + nums[j];
-        List<Integer> tupleForThatSum = List.of(nums[i], nums[j]);
+        List<Integer> tupleForThatSum = new ArrayList<>();
+
+        tupleForThatSum.add(i);
+        tupleForThatSum.add(j);
 
         if (allSumsOfTwoToListOfTuplesForThatSum.containsKey(sum)) {
           allSumsOfTwoToListOfTuplesForThatSum.get(sum).add(tupleForThatSum);
@@ -63,11 +57,17 @@ public class ThreeSum {
     return allSumsOfTwoToListOfTuplesForThatSum;
   }
 
-  private static void addListOfTuples(
-      Map<Integer, List<List<Integer>>> allSumsOfTwoToListOfTuplesForThatSum, int num,
-      List<List<Integer>> result) {
-    if (allSumsOfTwoToListOfTuplesForThatSum.containsKey(-num)) {
-      List<List<Integer>> listOfTuples = allSumsOfTwoToListOfTuplesForThatSum.get(-num);
+  private static void addListOf3Tuples(
+      Map<Integer, List<List<Integer>>> allSumsOfTwoToListOfTuplesForThatSum, int i,
+      List<List<Integer>> result, int[] nums) {
+    if (allSumsOfTwoToListOfTuplesForThatSum.containsKey(-nums[i])) {
+      List<List<Integer>> listOfTuples = allSumsOfTwoToListOfTuplesForThatSum.get(-nums[i]);
+      listOfTuples = listOfTuples.stream().filter(list -> !list.contains(i)).toList();
+      listOfTuples.forEach(list -> list.addFirst(nums[i]));
+      listOfTuples = listOfTuples.stream().map(list -> List.of(
+          list.getFirst(),
+          nums[list.get(1)],
+          nums[list.getLast()])).toList();
 
       result.addAll(listOfTuples);
     }
