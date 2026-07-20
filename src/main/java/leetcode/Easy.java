@@ -7,15 +7,22 @@ public class Easy {
   // https://leetcode.com/problems/two-sum/description/
   public static int[] twoSum(int[] nums, int target) {
     LinkedHashMap<Integer, Integer> targetMinusElementToElement = new LinkedHashMap<>();
+    int index = 0;
 
     for (int element : nums) {
-      targetMinusElementToElement.put(target - element, element);
+      targetMinusElementToElement.put(target - element, index);
+
+      index++;
     }
+
+    index = 0;
 
     for (int element : nums) {
       if (targetMinusElementToElement.containsKey(element)) {
-        return new int[] {element, targetMinusElementToElement.get(element)};
+        return new int[] {index, targetMinusElementToElement.get(element)};
       }
+
+      index++;
     }
 
     return null;
