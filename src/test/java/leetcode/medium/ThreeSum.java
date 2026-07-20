@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class ThreeSum {
+  // Complexity: O(n^2)
+  // Source: https://leetcode.com/problems/3sum/
   public static List<List<Integer>> threeSum(int[] nums) {
     nums = getNumsWithUniqueValues(nums);
     Map<Integer, List<List<Integer>>> allSumsOfTwoToListOfTuplesForThatSum =
