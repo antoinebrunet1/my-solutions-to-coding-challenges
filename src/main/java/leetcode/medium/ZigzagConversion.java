@@ -70,7 +70,7 @@ public class ZigzagConversion {
 
     List<Character> previousColumn = twoDList.getLast();
 
-    return previousColumn.getLast() == ' ';
+    return previousColumn.get(1) != ' ' && previousColumn.getFirst() == ' ';
   }
 
   private static void addColumnGoingDown(List<List<Character>> twoDList, int i, String s, int numRows) {
