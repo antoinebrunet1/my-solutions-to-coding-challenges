@@ -28,9 +28,11 @@ public class ZigzagConversion {
   private static List<List<Character>> get2dList(String s, int numRows) {
     List<List<Character>> twoDList = new ArrayList<>();
 
-    for (int i = 0; i < s.length(); i += numRows) {
-      if (isGoingDown(i, numRows)) {
+    for (int i = 0; i < s.length(); i++) {
+      if (isGoingDown(i, twoDList)) {
         addColumnGoingDown(twoDList, i, s, numRows);
+
+        i += (numRows - 1);
       } else {
         addColumnGoingUp(twoDList, i, s, numRows);
       }
@@ -39,8 +41,14 @@ public class ZigzagConversion {
     return twoDList;
   }
 
-  private static boolean isGoingDown(int i, int numRows) {
-    return (i / numRows) % (numRows - 1) == 0;
+  private static boolean isGoingDown(int i, List<List<Character>> twoDList) {
+    if (i == 0) {
+      return true;
+    }
+
+    List<Character> previousColumn = twoDList.getLast();
+
+    return previousColumn.getLast() == ' ';
   }
 
   private static void addColumnGoingDown(List<List<Character>> twoDList, int i, String s, int numRows) {
@@ -60,10 +68,10 @@ public class ZigzagConversion {
   private static void addColumnGoingUp(List<List<Character>> twoDList, int i, String s, int numRows) {
     List<Character> column = new ArrayList<>();
     List<Character> previousColumn = twoDList.getLast();
-    int indexOfLastCharInPreviousColumn = getIndexOfLastCharInPreviousColumn(previousColumn);
+    int indexOfLastCharInPreviousColumn = getIndexOfLastCharInPreviousColumn(previousColumn, numRows);
 
-    for (int j = 0; j <= getMaxIndexForColumn(i, numRows, s); j++) {
-      if (j == indexOfLastCharInPreviousColumn + 1) {
+    for (int j = i; j <= getMaxIndexForColumn(i, numRows, s); j++) {
+      if ((j - i) == indexOfLastCharInPreviousColumn - 1) {
         column.add(s.charAt(i));
       } else {
         column.add(' ');
@@ -73,13 +81,13 @@ public class ZigzagConversion {
     twoDList.add(column);
   }
 
-  private static int getIndexOfLastCharInPreviousColumn(List<Character> previousColumn) {
+  private static int getIndexOfLastCharInPreviousColumn(List<Character> previousColumn, int numRows) {
     if (previousColumn.getFirst() != ' ') {
-      return 3;
+      return numRows - 1;
     }
 
     for (int i = 1; i < previousColumn.size() - 1; i++) {
-      if (previousColumn.get(1) != ' ') {
+      if (previousColumn.get(i) != ' ') {
         return i;
       }
     }
