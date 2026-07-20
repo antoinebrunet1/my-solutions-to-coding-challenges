@@ -8,10 +8,16 @@ public class ZigzagConversion {
   public static String zigzagConversion(String s, int numRows) {
     StringBuilder stringBuilderResult = new StringBuilder();
 
-    for (List<Character> column : get2dList(s, numRows)) {
-      for (char c : column) {
-        if (c != ' ') {
-          stringBuilderResult.append(c);
+    List<List<Character>> columns = get2dList(s, numRows);
+
+    for (int i = 0; i < numRows; i++) {
+      for (List<Character> column : columns) {
+        if (i > column.size() - 1) {
+          break;
+        }
+
+        if (column.get(i) != ' ') {
+          stringBuilderResult.append(column.get(i));
         }
       }
     }
