@@ -18,7 +18,8 @@ public class Easy {
     index = 0;
 
     for (int element : nums) {
-      if (targetMinusElementToElement.containsKey(element)) {
+      if (targetMinusElementToElement.containsKey(element) &&
+          index != targetMinusElementToElement.get(element)) {
         return new int[] {index, targetMinusElementToElement.get(element)};
       }
 
