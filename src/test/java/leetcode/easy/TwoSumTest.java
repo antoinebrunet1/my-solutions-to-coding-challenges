@@ -1,7 +1,8 @@
 package leetcode.easy;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class TwoSumTest {
   @Test
@@ -11,6 +12,6 @@ public class TwoSumTest {
     int[] expectedResult = {0, 1};
     int[] actualResult = TwoSum.twoSum(nums, target);
 
-    assertEquals(expectedResult, actualResult);
+    assertArrayEquals(expectedResult, actualResult);
   }
 }
