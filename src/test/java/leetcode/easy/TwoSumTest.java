@@ -14,4 +14,14 @@ public class TwoSumTest {
 
     assertArrayEquals(expectedResult, actualResult);
   }
+
+  @Test
+  public void example2() {
+    int[] nums = {3, 2, 4};
+    int target = 6;
+    int[] expectedResult = {1, 2};
+    int[] actualResult = TwoSum.twoSum(nums, target);
+
+    assertArrayEquals(expectedResult, actualResult);
+  }
 }
