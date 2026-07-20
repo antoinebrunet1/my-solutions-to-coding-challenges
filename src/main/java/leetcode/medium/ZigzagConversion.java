@@ -10,6 +10,10 @@ public class ZigzagConversion {
       return s;
     }
 
+    if (numRows == 2) {
+      return zigzagConversionForNumRowsEqualsToTwo(s);
+    }
+
     StringBuilder stringBuilderResult = new StringBuilder();
 
     List<List<Character>> columns = get2dList(s, numRows);
@@ -24,6 +28,20 @@ public class ZigzagConversion {
           stringBuilderResult.append(column.get(i));
         }
       }
+    }
+
+    return stringBuilderResult.toString();
+  }
+
+  private static String zigzagConversionForNumRowsEqualsToTwo(String s) {
+    StringBuilder stringBuilderResult = new StringBuilder();
+
+    for (int i = 0; i < s.length() / 2; i++) {
+      stringBuilderResult.append(s.charAt(i)).append(s.charAt(i + (s.length() / 2)));
+    }
+
+    if (s.length() % 2 != 0) {
+      stringBuilderResult.append(s.charAt(s.length() - 1));
     }
 
     return stringBuilderResult.toString();
