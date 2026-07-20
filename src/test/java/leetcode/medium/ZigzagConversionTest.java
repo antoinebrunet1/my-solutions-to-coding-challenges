@@ -23,4 +23,14 @@ public class ZigzagConversionTest {
 
     Assertions.assertEquals(expectedResult, actualResult);
   }
+
+  @Test
+  public void example3() {
+    String s = "A";
+    int numRows = 1;
+    String expectedResult = "A";
+    String actualResult = ZigzagConversion.zigzagConversion(s, numRows);
+
+    Assertions.assertEquals(expectedResult, actualResult);
+  }
 }
