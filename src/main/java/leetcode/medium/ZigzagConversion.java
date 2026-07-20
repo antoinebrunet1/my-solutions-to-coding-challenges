@@ -6,6 +6,10 @@ import java.util.List;
 public class ZigzagConversion {
   // https://leetcode.com/problems/zigzag-conversion/description/
   public static String zigzagConversion(String s, int numRows) {
+    if (numRows == 1) {
+      return s;
+    }
+
     StringBuilder stringBuilderResult = new StringBuilder();
 
     List<List<Character>> columns = get2dList(s, numRows);
