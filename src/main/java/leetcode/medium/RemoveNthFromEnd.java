@@ -19,6 +19,7 @@ public class RemoveNthFromEnd {
     }
   }
 
+  // Source: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
   public ListNode removeNthFromEnd(ListNode head, int n) {
     int sz = getNumberOfNodes(head);
 
