@@ -26,7 +26,7 @@ public class RemoveNthFromEnd {
       return null;
     }
 
-    int indexOfNodeToRemove = sz - n - 1;
+    int indexOfNodeToRemove = sz - n;
     ListNode nodeBeforeTheOneToRemove = getNodeBeforeTheOneToRemove(head, indexOfNodeToRemove);
     nodeBeforeTheOneToRemove.next = nodeBeforeTheOneToRemove.next.next;
 
