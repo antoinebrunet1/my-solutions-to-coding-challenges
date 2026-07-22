@@ -1,5 +1,6 @@
 package leetcode.medium;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RemoveNthFromEndTest {
@@ -15,15 +16,47 @@ public class RemoveNthFromEndTest {
     return head;
   }
 
-  private void test(int[] list, int n) {
-    new RemoveNthFromEnd().removeNthFromEnd(getHead(list), n);
+  private boolean listsAreEqual(RemoveNthFromEnd.ListNode head1, RemoveNthFromEnd.ListNode head2) {
+    if (head1 == null && head2 == null) {
+      return true;
+    }
+
+    if (head1 == null || head2 == null) {
+      return false;
+    }
+
+    RemoveNthFromEnd.ListNode currentNodeOfList1 = head1;
+    RemoveNthFromEnd.ListNode currentNodeOfList2 = head2;
+
+    while (!(currentNodeOfList1 == null && currentNodeOfList2 == null)) {
+      if (currentNodeOfList1 == null || currentNodeOfList2 == null) {
+        return false;
+      }
+
+      if (currentNodeOfList1.val != currentNodeOfList2.val) {
+        return false;
+      }
+
+      currentNodeOfList1 = currentNodeOfList1.next;
+      currentNodeOfList2 = currentNodeOfList2.next;
+    }
+
+    return true;
+  }
+
+  private void test(int[] input, int n, int[] expectedResultArray) {
+    RemoveNthFromEnd.ListNode expectedResult = getHead(expectedResultArray);
+    RemoveNthFromEnd.ListNode actualResult = new RemoveNthFromEnd().removeNthFromEnd(getHead(input), n);
+
+    Assertions.assertTrue(listsAreEqual(expectedResult, actualResult));
   }
 
   @Test
   public void example1() {
-    int[] list = new int[] {1, 2, 3, 4, 5};
+    int[] input = new int[] {1, 2, 3, 4, 5};
     int n = 2;
+    int[] expectedResultArray = new int[] {1, 2, 3, 5};
 
-    test(list, n);
+    test(input, n, expectedResultArray);
   }
 }
