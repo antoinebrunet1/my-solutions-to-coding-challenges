@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 public class RemoveNthFromEndTest {
   private RemoveNthFromEnd.ListNode getHead(int[] list) {
+    if (list.length == 0) {
+      return null;
+    }
+
     RemoveNthFromEnd.ListNode head = new RemoveNthFromEnd.ListNode(list[0]);
     RemoveNthFromEnd.ListNode previousNode = head;
 
