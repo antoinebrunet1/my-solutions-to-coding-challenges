@@ -2,7 +2,7 @@ package leetcode.medium;
 
 public class RemoveNthFromEnd {
   // Definition for singly-linked list.
-  public class ListNode {
+  public static class ListNode {
     int val;
     ListNode next;
 
