@@ -59,4 +59,13 @@ public class RemoveNthFromEndTest {
 
     test(input, n, expectedResultArray);
   }
+
+  @Test
+  public void example2() {
+    int[] input = new int[] {1};
+    int n = 1;
+    int[] expectedResultArray = new int[] {};
+
+    test(input, n, expectedResultArray);
+  }
 }
