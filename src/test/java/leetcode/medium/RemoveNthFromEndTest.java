@@ -15,7 +15,7 @@ public class RemoveNthFromEndTest {
     return head;
   }
 
-  private void test(int list[], int n) {
+  private void test(int[] list, int n) {
     new RemoveNthFromEnd().removeNthFromEnd(getHead(list), n);
   }
 
