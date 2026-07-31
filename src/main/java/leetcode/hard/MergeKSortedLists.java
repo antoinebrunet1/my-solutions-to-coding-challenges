@@ -7,6 +7,7 @@ import leetcode.utils.ListNode;
 
 public class MergeKSortedLists {
   // Source: https://leetcode.com/problems/merge-k-sorted-lists/?envType=problem-list-v2&envId=linked-list
+  // Complexity: O(n)
   public static ListNode mergeKLists(ListNode[] lists) {
     if (lists.length == 0) {
       return null;
