@@ -19,4 +19,28 @@ public class SwapNodesInPairsTest {
 
     test(input, expectedResultArray);
   }
+
+  @Test
+  public void example2() {
+    int[] input = new int[] {};
+    int[] expectedResultArray = new int[] {};
+
+    test(input, expectedResultArray);
+  }
+
+  @Test
+  public void example3() {
+    int[] input = new int[] {1};
+    int[] expectedResultArray = new int[] {1};
+
+    test(input, expectedResultArray);
+  }
+
+  @Test
+  public void example4() {
+    int[] input = new int[] {1, 2, 3};
+    int[] expectedResultArray = new int[] {2, 1, 3};
+
+    test(input, expectedResultArray);
+  }
 }
