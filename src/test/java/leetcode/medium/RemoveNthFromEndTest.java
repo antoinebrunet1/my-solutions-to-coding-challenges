@@ -1,26 +1,27 @@
 package leetcode.medium;
 
+import leetcode.utils.ListNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RemoveNthFromEndTest {
-  private RemoveNthFromEnd.ListNode getHead(int[] list) {
+  private ListNode getHead(int[] list) {
     if (list.length == 0) {
       return null;
     }
 
-    RemoveNthFromEnd.ListNode head = new RemoveNthFromEnd.ListNode(list[0]);
-    RemoveNthFromEnd.ListNode previousNode = head;
+    ListNode head = new ListNode(list[0]);
+    ListNode previousNode = head;
 
     for (int i = 1; i < list.length; i++) {
-      previousNode.next = new RemoveNthFromEnd.ListNode(list[i]);
+      previousNode.next = new ListNode(list[i]);
       previousNode = previousNode.next;
     }
 
     return head;
   }
 
-  private boolean listsAreEqual(RemoveNthFromEnd.ListNode head1, RemoveNthFromEnd.ListNode head2) {
+  private boolean listsAreEqual(ListNode head1, ListNode head2) {
     if (head1 == null && head2 == null) {
       return true;
     }
@@ -29,8 +30,8 @@ public class RemoveNthFromEndTest {
       return false;
     }
 
-    RemoveNthFromEnd.ListNode currentNodeOfList1 = head1;
-    RemoveNthFromEnd.ListNode currentNodeOfList2 = head2;
+    ListNode currentNodeOfList1 = head1;
+    ListNode currentNodeOfList2 = head2;
 
     while (!(currentNodeOfList1 == null && currentNodeOfList2 == null)) {
       if (currentNodeOfList1 == null || currentNodeOfList2 == null) {
@@ -49,8 +50,8 @@ public class RemoveNthFromEndTest {
   }
 
   private void test(int[] input, int n, int[] expectedResultArray) {
-    RemoveNthFromEnd.ListNode expectedResult = getHead(expectedResultArray);
-    RemoveNthFromEnd.ListNode actualResult = new RemoveNthFromEnd().removeNthFromEnd(getHead(input), n);
+    ListNode expectedResult = getHead(expectedResultArray);
+    ListNode actualResult = new RemoveNthFromEnd().removeNthFromEnd(getHead(input), n);
 
     Assertions.assertTrue(listsAreEqual(expectedResult, actualResult));
   }

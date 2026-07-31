@@ -1,7 +1,9 @@
 package leetcode.medium;
 
+import leetcode.utils.ListNode;
+
 public class SwapNodesInPairs {
-  public static RemoveNthFromEnd.ListNode swapPairs(RemoveNthFromEnd.ListNode head) {
+  public static ListNode swapPairs(ListNode head) {
     // If head = []
     if (head == null) {
       return null;
@@ -12,9 +14,9 @@ public class SwapNodesInPairs {
       return head;
     }
 
-    RemoveNthFromEnd.ListNode node1InPair = head;
-    RemoveNthFromEnd.ListNode node2InPair = head.next;
-    RemoveNthFromEnd.ListNode result = node2InPair;
+    ListNode node1InPair = head;
+    ListNode node2InPair = head.next;
+    ListNode result = node2InPair;
 
     while (true) {
       swapPair(node1InPair, node2InPair);
@@ -35,8 +37,8 @@ public class SwapNodesInPairs {
     return result;
   }
 
-  private static void swapPair(RemoveNthFromEnd.ListNode node1InPair,
-                               RemoveNthFromEnd.ListNode node2InPair) {
+  private static void swapPair(ListNode node1InPair,
+                               ListNode node2InPair) {
     node1InPair.next = node2InPair.next;
     node2InPair.next = node1InPair;
   }
