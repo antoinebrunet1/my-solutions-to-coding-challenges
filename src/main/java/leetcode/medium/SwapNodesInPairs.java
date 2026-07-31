@@ -21,6 +21,7 @@ public class SwapNodesInPairs {
     while (true) {
       swapPair(node1InPair, node2InPair);
 
+      ListNode oldNode1InPair = node1InPair;
       node1InPair = node1InPair.next;
 
       if (node1InPair == null) {
@@ -32,6 +33,8 @@ public class SwapNodesInPairs {
       if (node2InPair == null) {
         break;
       }
+
+      oldNode1InPair.next = node2InPair;
     }
 
     return result;
