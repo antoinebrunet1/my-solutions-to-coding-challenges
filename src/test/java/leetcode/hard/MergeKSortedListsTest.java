@@ -16,4 +16,20 @@ public class MergeKSortedListsTest {
 
     Assertions.assertTrue(ListNode.listsAreEqual(expectedResult, actualResult));
   }
+
+  @Test
+  public void example2() {
+    ListNode[] inputList = new ListNode[] {};
+    ListNode result = MergeKSortedLists.mergeKLists(inputList);
+
+    Assertions.assertNull(result);
+  }
+
+  @Test
+  public void example3() {
+    ListNode[] inputList = new ListNode[] {null};
+    ListNode result = MergeKSortedLists.mergeKLists(inputList);
+
+    Assertions.assertNull(result);
+  }
 }
