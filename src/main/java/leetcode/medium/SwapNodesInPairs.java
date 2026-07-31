@@ -3,6 +3,7 @@ package leetcode.medium;
 import leetcode.utils.ListNode;
 
 public class SwapNodesInPairs {
+  // Source: https://leetcode.com/problems/swap-nodes-in-pairs/?envType=problem-list-v2&envId=linked-list
   public static ListNode swapPairs(ListNode head) {
     // If head = []
     if (head == null) {
