@@ -17,4 +17,11 @@ public class RotateListTest {
     int k = 2;
     int[] expected = {4, 5, 1, 2, 3};
   }
+
+  @Test
+  public void example2() {
+    int[] head = {0, 1, 2};
+    int k = 4;
+    int[] expected = {2, 0, 1};
+  }
 }
