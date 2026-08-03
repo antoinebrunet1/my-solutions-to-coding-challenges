@@ -4,6 +4,7 @@ import leetcode.utils.ListNode;
 
 public class RotateList {
   // Source: https://leetcode.com/problems/rotate-list/description/?envType=problem-list-v2&envId=linked-list
+  // Complexity: O(n)
   public static ListNode rotateRight(ListNode head, int k) {
     if (k == 0 || head == null) {
       return head;
