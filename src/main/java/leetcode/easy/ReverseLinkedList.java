@@ -15,6 +15,11 @@ public class ReverseLinkedList {
     do {
       ListNode futureNode2InCurrentPair = node2InCurrentPair.next;
       node2InCurrentPair.next = node1InCurrentPair; // A <- B
+
+      if (node1InCurrentPair.equals(head)) {
+        node1InCurrentPair.next = null;
+      }
+
       node1InCurrentPair = node2InCurrentPair;
       node2InCurrentPair = futureNode2InCurrentPair;
     } while (node2InCurrentPair != null);
