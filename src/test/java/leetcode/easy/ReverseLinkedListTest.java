@@ -18,4 +18,12 @@ public class ReverseLinkedListTest {
 
     test(head, expected);
   }
+
+  @Test
+  public void example2Iteratively() {
+    int[] head = {1, 2};
+    int[] expected = {2, 1};
+
+    test(head, expected);
+  }
 }
