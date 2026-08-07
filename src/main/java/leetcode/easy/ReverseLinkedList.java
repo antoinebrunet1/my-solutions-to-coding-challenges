@@ -4,6 +4,8 @@ import leetcode.utils.ListNode;
 
 public class ReverseLinkedList {
   // Source: https://leetcode.com/problems/reverse-linked-list/description/?envType=problem-list-v2&envId=linked-list
+  // Time complexity: O(n)
+  // Space complexity: O(1)
   public static ListNode reverseListIteratively(ListNode head) {
     // If the list is empty or has only one element
     if (head == null || head.next == null) {
